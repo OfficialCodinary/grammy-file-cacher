@@ -1,0 +1,26 @@
+{
+  "name": "grammy-file-cacher",
+  "version": "1.0.0",
+  "description": "A simple file caching system for grammy",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OfficialCodinary/grammy-file-cacher.git"
+  },
+  "keywords": [
+    "File",
+    "cache",
+    "grammy",
+    "bots",
+    "telegram"
+  ],
+  "author": "ROBBING GAMER",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/OfficialCodinary/grammy-file-cacher/issues"
+  },
+  "homepage": "https://github.com/OfficialCodinary/grammy-file-cacher#readme"
+}

@@ -2,7 +2,7 @@ const { InputFile } = require('grammy')
 const map = new Map()
 const parallel = new Map()
 
-const CacheMedias = async (prev, method, payload, signal) => {
+const CacheMedias = () => async (prev, method, payload, signal) => {
     let response;
     const mediaTypes = ['photo', 'audio', 'video', 'animation', 'document', 'video_note', 'voice'];
     if (method === 'sendPhoto' || method === 'sendAudio' || method === 'sendVideo' || method === 'sendAnimation' || method === 'sendDocument' || method === 'sendVideoNote' || method === 'sendVoice') {

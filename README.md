@@ -5,7 +5,7 @@ Note - This repo is still under active contruction and can create issues in prod
 
 ## Get started
 ```js
-import {CacheMedias} from "..."
+import { CacheMedias } from "..."
 bot.use(CacheMedias())
 ```
 

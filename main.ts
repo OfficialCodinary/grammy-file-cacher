@@ -1,6 +1,6 @@
 const { InputFile } = require('grammy')
 const map = new Map()
-const concurreny = new Map()
+const parallel = new Map()
 
 const CacheMedias = async (prev, method, payload, signal) => {
     let response;
@@ -15,17 +15,17 @@ const CacheMedias = async (prev, method, payload, signal) => {
             payload[media] = map.get(mediaString)
             response = prev(method, payload, signal)
         } else {
-            if (concurreny.has(mediaString)) {
+            if (parallel.has(mediaString)) {
                 await new Promise<void>((resolve) => {
                     const interval = setInterval(() => {
-                        if (!concurreny.has(mediaString)) {
+                        if (!parallel.has(mediaString)) {
                             clearInterval(interval);
                             resolve();
                         }
                     }, 50);
                 });
             } else {
-                concurreny.set(mediaString, true)
+                parallel.set(mediaString, true)
             }
             response = prev(method, payload, signal)
 
@@ -34,7 +34,7 @@ const CacheMedias = async (prev, method, payload, signal) => {
             } else {
                 map.set(mediaString, (await response).result[media].file_id)
             }
-            concurreny.delete(mediaString)
+            parallel.delete(mediaString)
         }
     } else if (method === 'sendMediaGroup' || method === 'editMessageMedia') {
         const tempMedias: string | null[] = []

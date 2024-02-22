@@ -1,7 +1,7 @@
 # grammy-file-cacher
 A simple file caching system for grammy
 
-Note - This repo is still under active contruction and can create issues in production. (parallel processing)
+Note - This repo is still under active contruction and can create issues in production. (parallel processing of mediaGroups)
 
 ## Get started
 ```js

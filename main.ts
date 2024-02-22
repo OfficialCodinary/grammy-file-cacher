@@ -12,6 +12,17 @@ function getFileID(response, media: string): Promise<string> {
     })
 }
 
+/**
+ * Caches media files before making API requests.
+ * 
+ * Example Usage: 
+ * ```ts
+ * bot.api.config.use(CacheMedias())
+ * ```
+ * ---
+ * - Api Documentation: https://github.com/OfficialCodinary/grammy-file-cacher
+ * @returns {Function} The transformer function
+ */
 const CacheMedias = () => async (prev, method, payload, signal) => {
     let response;
     const mediaTypes = ['photo', 'audio', 'video', 'animation', 'document', 'video_note', 'voice'];
@@ -22,7 +33,6 @@ const CacheMedias = () => async (prev, method, payload, signal) => {
         const mediaString = payload[media] instanceof InputFile ? payload[media].fileData : payload[media]
 
         if (map.has(mediaString)) {
-            console.log(await map.get(mediaString))
             payload[media] = await map.get(mediaString)
             response = prev(method, payload, signal)
         } else {

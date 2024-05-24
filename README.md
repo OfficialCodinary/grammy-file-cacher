@@ -45,12 +45,8 @@ const bot = new Bot('YOUR_TOKEN_HERE');
 bot.api.config.use(CacheMedias());
 
 bot.command('sendphoto', async (ctx) => {
-    // Send 5 photos
-    await ctx.replyWithPhoto(new InputFile('./photo.jpg'));
-    await ctx.replyWithPhoto(new InputFile('./photo.jpg'));
-    await ctx.replyWithPhoto(new InputFile('./photo.jpg'));
-    await ctx.replyWithPhoto(new InputFile('./photo.jpg'));
-    await ctx.replyWithPhoto(new InputFile('./photo.jpg'));
+    // Send a photo
+    await ctx.api.sendPhoto(ctx.chat.id, new InputFile('./photo.jpg'));
 });
 
 bot.start();
